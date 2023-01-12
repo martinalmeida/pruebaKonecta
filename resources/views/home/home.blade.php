@@ -13,7 +13,7 @@
     <x-card lg="9" xl="9">
         <div class="col-12">
             <div class="d-flex flex-column align-items-center justify-content-center p-4">
-                <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_tic6wso3.json" background="transparent"
+                <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_4mu3hoco.json" background="transparent"
                     speed="1" style="width: 250px; height: 250px;" loop autoplay></lottie-player>
                 <h5 class="mb-0 fw-700 text-center mt-3">
                     Bienvenido a Konecta {{ auth()->user()->name }}

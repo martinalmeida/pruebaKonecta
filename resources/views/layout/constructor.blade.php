@@ -35,7 +35,7 @@
             <!-- BEGIN Left Aside -->
             <aside class="page-sidebar">
                 <div class="page-logo">
-                    <a href="/home"
+                    <a href="/inicio"
                         class="page-logo-link press-scale-down d-flex align-items-center position-relative">
                         <img src="{{ asset('/build/img/logo.png') }}" alt="SmartAdmin WebApp"
                             aria-roledescription="logo">
@@ -63,13 +63,13 @@
                         <li class="nav-title">Menu Prueba</li>
 
                         <li class="{{ $routeActive == 'home' ? 'active' : '' }}">
-                            <a href="/home" title="Inicio de plataforma" data-filter-tags="category">
+                            <a href="/inicio" title="Inicio de plataforma" data-filter-tags="category">
                                 <i class="fal fa-house"></i>
                                 <span class="nav-link-text" data-i18n="nav.category">Inicio</span>
                             </a>
                         </li>
                         <li
-                            class="{{ $routeActive == 'users' ? 'active open' : '' }}
+                            class="{{ $routeActive == 'producto' ? 'active open' : '' }}
                                 {{ $routeActive == 'asignar' ? 'active open' : '' }}
                                 {{ $routeActive == 'roles' ? 'active open' : '' }}">
 
@@ -78,8 +78,8 @@
                                 <span class="nav-link-text" data-i18n="nav.category">Inventario</span>
                             </a>
                             <ul>
-                                <li class="{{ $routeActive == 'users' ? 'active' : '' }}">
-                                    <a href="/users" title="Productos del Inventario"
+                                <li class="{{ $routeActive == 'producto' ? 'active' : '' }}">
+                                    <a href="/productos" title="Productos del Inventario"
                                         data-filter-tags="utilities disabled item">
                                         <span class="nav-link-text"
                                             data-i18n="nav.utilities_menu_child_another_item">Productos</span>

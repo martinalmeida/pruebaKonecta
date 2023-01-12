@@ -39,5 +39,14 @@ class DatabaseSeeder extends Seeder
             'id' => 4,
             'status' => 'Eliminado',
         ]);
+
+        DB::table('categorias')->insert([
+            'categoria' => 'Bebidas',
+            'descripcion' => 'Bebidas calientes o frias.',
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => 'Comidas',
+            'descripcion' => 'Comidas o apetitivos para la venta.',
+        ]);
     }
 }

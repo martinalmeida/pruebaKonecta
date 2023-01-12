@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_z1tujjy0.json" background="transparent" speed="1"
+    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_hy4txm7l.json" background="transparent" speed="1"
         style="width: 50%; margin: auto;" loop autoplay></lottie-player>
     <x-form-login id="formLogin">
         <button class="btn btn-info btn-block btn-lg text-white" type="button" onclick="login();">
