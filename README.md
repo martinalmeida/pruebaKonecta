@@ -30,7 +30,7 @@ Usuario: admin@admin.com Contraseña: admin
 ```
 
 ## Capturas
-
+<img src="https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG">
 ![Image text](https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG)
 ![Image text](https://github.com/martinalmeida/pruebaKonecta/blob/main/dash.PNG)
 
