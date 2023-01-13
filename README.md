@@ -27,7 +27,7 @@ php artisan db:seed
 
 ```bash
 create view view_stocks as
-select 
+select
 s.id,
 p.nombreProducto,
 c.categoria,
@@ -35,17 +35,17 @@ u.name,
 s.cantidad,
 (SELECT COUNT(v2.cantidad) FROM ventas v2 WHERE v2.stockId = s.id)vendida,
 ((s.cantidad) - (SELECT COUNT(v2.cantidad) FROM ventas v2 WHERE v2.stockId = s.id))disponible
-from 
-stock s 
-join ventas v on v.stockId = s.id 
-join productos p on s.productoId = p.id 
-join categorias c on p.categoriaId = c.id 
-join users u on s.userId = u.id 
-join status s2 on s.status = s2.id 
+from
+stock s
+left join ventas v on v.stockId = s.id
+join productos p on s.productoId = p.id
+join categorias c on p.categoriaId = c.id
+join users u on s.userId = u.id
+join status s2 on s.status = s2.id
 where p.status = 1
 and s.status in(1,2)
-group by s.id 
-order by p.nombreProducto desc;
+group by s.id
+order by p.nombreProducto asc;
 ```
 
 ## Usuario
