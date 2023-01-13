@@ -31,8 +31,8 @@ Usuario: admin@admin.com Contraseña: admin
 
 ## Capturas
 
-![alt text](https://github.com/martinalmeida/Gestor-de-tikets-MVC---Postrgres-/blob/main/assets/img/login.PNG)
-![alt text](https://github.com/martinalmeida/Gestor-de-tikets-MVC---Postrgres-/blob/main/assets/img/admin.PNG)
+![alt text](https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG)
+![alt text](https://github.com/martinalmeida/pruebaKonecta/blob/main/dash.PNG)
 
 ## Licencia
 
