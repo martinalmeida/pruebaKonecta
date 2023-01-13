@@ -24,33 +24,36 @@
             <th>Fecha Creación</th>
             <th>Usuario</th>
             <th>Estado</th>
-            <th>Acciones</th>
+            <th style="width:150px">Acciones</th>
         </x-table>
     </x-panel>
 
-    <x-modal-form id="ModalRegistro" title="Registro de Usuarios" text="Los usuarios que crees se limitan a dos roles.">
+    <x-modal-form id="ModalRegistro" title="Registro de Productos"
+        text="Los productos son la parte principal del inventario.">
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="nombreProducto">Nombre del Producto:</label>
+            <input type="text" onKeyPress="if(this.value.length==100)return false;" class="form-control"
+                id="nombreProducto" name="nombreProducto" placeholder="Nombre del Producto" minlength="3" maxlength="100"
+                required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="referencia">Referencia:</label>
+            <input type="text" onKeyPress="if(this.value.length==100)return false;" class="form-control" id="referencia"
+                name="referencia" placeholder="Rreferencia del producto" minlength="3" maxlength="100" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="precio">Precio del Prducto:</label>
+            <input type="text" onkeypress="return filterFloat(event,this);" class="form-control" id="precio"
+                name="precio" placeholder="Precio del producto" minlength="3" maxlength="10" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="peso">Peso del Prducto:</label>
+            <input type="text" onkeypress="return filterFloat(event,this);" class="form-control" id="peso"
+                name="peso" placeholder="Precio del producto" minlength="3" maxlength="10" required>
+        </div>
         <div class="col-md-12 mb-3">
-            <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_wuojlcng.json" background="transparent"
-                speed="1" style="width: 20%; margin: auto;" loop autoplay></lottie-player>
-        </div>
-        <div class="col-md-6 mb-3">
-            <label class="form-label" for="nombre">Nombre de Usuario</label>
-            <input type="text" onKeyPress="if(this.value.length==80)return false;" class="form-control" id="nombre"
-                name="nombre" placeholder="Nombre del Usuario" minlength="3" maxlength="80" required>
-        </div>
-        <div class="col-md-6 mb-3">
-            <label class="form-label" for="correo">Correo Electronico</label>
-            <input type="email" onKeyPress="if(this.value.length==200)return false;" class="form-control" id="correo"
-                name="correo" placeholder="Correo Electronico">
-        </div>
-        <div class="col-md-6 mb-3">
-            <label class="form-label" for="password">Contraseña</label>
-            <input type="text" onKeyPress="if(this.value.length==50)return false;" class="form-control" id="password"
-                name="password" placeholder="Contraseña">
-        </div>
-        <div class="col-md-6 mb-3">
-            <label class="form-label" for="rol">Rol:</label>
-            <select class="select2 custom-select form-control" id="rol" name="rol">
+            <label class="form-label" for="categoriaId">Categoría perteneciente del producto:</label>
+            <select class="select2 custom-select form-control" id="categoriaId" name="categoriaId">
             </select>
         </div>
     </x-modal-form>

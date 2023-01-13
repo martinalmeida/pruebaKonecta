@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
 use DataTables;
-use Hash;
 
 
 class ProductosController extends Controller
@@ -23,13 +22,26 @@ class ProductosController extends Controller
                 ->join('users AS u', 'u.id', '=', 'productos.userId')
                 ->leftjoin('stock AS st', 'st.productoId', '=', 'productos.id')
                 ->join('status AS s', 's.id', '=', 'productos.status')
+                ->select(
+                    'productos.id',
+                    'productos.nombreProducto',
+                    'productos.referencia',
+                    'productos.peso',
+                    'c.categoria',
+                    'u.name',
+                    's.status AS estado',
+                    'productos.status',
+                )
+                ->selectRaw("CONCAT(productos.precio, '$') AS precio")
+                ->selectRaw("REPLACE(DATE_FORMAT(productos.created_at, '%d %m %Y'), ' ', '/') AS creado")
+                ->selectRaw("IFNULL(st.cantidad,0) AS cantidad")
                 ->whereIn('productos.status', array(1, 2))
                 ->orderBy('productos.nombreProducto', 'desc')
-                ->get(['productos.id', 'productos.nombreProducto', 'productos.referencia', 'productos.precio', 'productos.peso', 'c.categoria', 'st.cantidad', 'productos.created_at', 'u.name', 'productos.status AS estado']);
+                ->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $butons = '<div class="text-center"><a onclick="listData(' . $row['id'] . ');" class="btn btn-success btn-sm text-white" title="Editar Usuario"><i class="fal fa-user-edit"></i></a> ';
-                    $butons .= '<a onclick="statusChange(' . $row['id'] . ', ' . $row['estado'] . ');" class="btn btn-primary btn-sm text-white" title="Cambiar Estado"><i class="fal fa-exchange-alt"></i></a> ';
+                    $butons .= '<a onclick="statusChange(' . $row['id'] . ', ' . $row['status'] . ');" class="btn btn-primary btn-sm text-white" title="Cambiar Estado"><i class="fal fa-exchange-alt"></i></a> ';
                     $butons .= '<a onclick="deleteRegister(' . $row['id'] . ');" class="btn btn-danger btn-sm text-white" title="Eliminar Usuario"><i class="fal fa-trash"></i></a></div>';
                     return $butons;
                 })
@@ -39,58 +51,68 @@ class ProductosController extends Controller
         return view('tablaProductos');
     }
 
-    // public function selectRol(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $roles = Rol::select('id', 'rol')->get();
-    //     }
-    //     return response()->json($roles);
-    // }
+    public function selectCategoria(Request $request)
+    {
+        if ($request->ajax()) {
+            $roles = Categoria::select('id', 'categoria')->get();
+        }
+        return response()->json($roles);
+    }
 
-    // public function create(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $create = User::create([
-    //             'rolId' => $request->rol,
-    //             'name' => $request->nombre,
-    //             'email' => $request->correo,
-    //             'password' => Hash::make($request->password)
-    //         ]);
-    //     }
-    //     $create ? $response = ['status' => true] : $response = ['status' => false];
-    //     return response()->json($response);
-    // }
+    public function create(Request $request)
+    {
+        if ($request->ajax()) {
+            $request->validate([
+                'categoriaId' => 'required',
+                'userId' => 'required',
+                'nombreProducto' => 'required',
+                'referencia' => 'required',
+                'precio' => 'required',
+                'peso' => 'required'
+            ]);
+            $create = Producto::create($request->all());
+        }
+        $create ? $response = ['status' => true] : $response = ['status' => false];
+        return response()->json($response);
+    }
 
-    // public function selectUser($id)
-    // {
-    //     $user = User::where('id', $id)->get();
-    //     return response()->json($user);
-    // }
+    public function selectProducto($id)
+    {
+        $producto = Producto::where('id', $id)->get();
+        return response()->json($producto);
+    }
 
-    // public function update(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $update = User::where('id', $request->idUser)
-    //             ->limit(1)->update(['rolId' => $request->rol, 'name' => $request->nombre, 'email' => $request->correo, 'password' => Hash::make($request->password)]);
-    //     }
-    //     $update ? $response = ['status' => true] : $response = ['status' => false];
-    //     return response()->json($response);
-    // }
+    public function update(Request $request)
+    {
+        if ($request->ajax()) {
+            $update = Producto::where('id', $request->idProducto)
+                ->limit(1)->update([
+                    'categoriaId' => $request->categoriaId,
+                    'userId' => $request->userId,
+                    'nombreProducto' => $request->nombreProducto,
+                    'referencia' => $request->referencia,
+                    'precio' => $request->precio,
+                    'peso' => $request->peso
+                ]);
+        }
+        $update ? $response = ['status' => true] : $response = ['status' => false];
+        return response()->json($response);
+    }
 
-    // public function status($id, $status)
-    // {
-    //     $status == 1 ? $change = 2 : $change = 1;
-    //     $update = User::where('id', $id)
-    //         ->limit(1)->update(['status' => $change]);
-    //     $update ? $response = ['status' => true] : $response = ['status' => false];
-    //     return response()->json($response);
-    // }
+    public function status($id, $status)
+    {
+        $status == 1 ? $change = 2 : $change = 1;
+        $status = Producto::where('id', $id)
+            ->limit(1)->update(['status' => $change]);
+        $status ? $response = ['status' => true] : $response = ['status' => false];
+        return response()->json($response);
+    }
 
-    // public function delete($id)
-    // {
-    //     $update = User::where('id', $id)
-    //         ->limit(1)->update(['status' => 3]);
-    //     $update ? $response = ['status' => true] : $response = ['status' => false];
-    //     return response()->json($response);
-    // }
+    public function delete($id)
+    {
+        $delete = Producto::where('id', $id)
+            ->limit(1)->update(['status' => 3]);
+        $delete ? $response = ['status' => true] : $response = ['status' => false];
+        return response()->json($response);
+    }
 }

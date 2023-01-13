@@ -16,10 +16,10 @@ Route::controller(SesionController::class)->group(function () {
 Route::controller(ProductosController::class)->group(function () {
     Route::get('/productos', 'index')->middleware('auth');
     Route::get('tablaProductos', 'dataTableProducto')->name('table.producto')->middleware('auth');
-    // Route::get('selectRol', 'selectRol')->name('select.roles')->middleware('auth');
-    // Route::post('/createUser', 'create')->middleware('auth');
-    // Route::get('/user/{id}', 'selectUser')->middleware('auth');
-    // Route::post('/updateUser', 'update')->middleware('auth');
-    // Route::get('/statusUser/{id}/{status}', 'status')->middleware('auth');
-    // Route::get('/deleteUser/{id}', 'delete')->middleware('auth');
+    Route::get('selectCategoria', 'selectCategoria')->name('select.categoria')->middleware('auth');
+    Route::post('/createProducto', 'create')->middleware('auth');
+    Route::get('/producto/{id}', 'selectProducto')->middleware('auth');
+    Route::post('/updateProducto', 'update')->middleware('auth');
+    Route::get('/statusProducto/{id}/{status}', 'status')->middleware('auth');
+    Route::get('/deleteProducto/{id}', 'delete')->middleware('auth');
 });
