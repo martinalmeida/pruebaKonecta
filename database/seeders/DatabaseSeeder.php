@@ -48,5 +48,9 @@ class DatabaseSeeder extends Seeder
             'categoria' => 'Comidas',
             'descripcion' => 'Comidas o apetitivos para la venta.',
         ]);
+        DB::table('categorias')->insert([
+            'categoria' => 'Dulces',
+            'descripcion' => 'Pasabocas o bocadillos para la venta.',
+        ]);
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
+use App\Models\Stock;
 use DataTables;
 
 
@@ -54,9 +56,9 @@ class ProductosController extends Controller
     public function selectCategoria(Request $request)
     {
         if ($request->ajax()) {
-            $roles = Categoria::select('id', 'categoria')->get();
+            $categorias = Categoria::select('id', 'categoria')->get();
         }
-        return response()->json($roles);
+        return response()->json($categorias);
     }
 
     public function create(Request $request)
@@ -71,6 +73,13 @@ class ProductosController extends Controller
                 'peso' => 'required'
             ]);
             $create = Producto::create($request->all());
+            if ($create) {
+                $create = Stock::create([
+                    'productoId' => DB::getPdo()->lastInsertId(),
+                    'userId' => $request->userId,
+                    'cantidad' => '1'
+                ]);
+            }
         }
         $create ? $response = ['status' => true] : $response = ['status' => false];
         return response()->json($response);

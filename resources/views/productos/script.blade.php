@@ -123,9 +123,7 @@
             }
             else {
                 edit == true ? peticion = "/updateProducto" : peticion = "/createProducto";
-                data = $("#" + form).serialize() + '&' + $.param({
-                    'userId': {{ auth()->user()->id }}
-                });
+                data = $("#" + form).serialize();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

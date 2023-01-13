@@ -34,8 +34,8 @@
                                     <img class="img-fluid mx-auto d-block"
                                         src="{{ asset('/build/img/logo-login.png') }}" alt="VolApp">
                                     <small class="h3 fw-300 mt-2 mb-5 text-white opacity-60 text-center">
-                                        <b>Prueba tecnica para Konecta Colombia hecha por Martin Danilo Almeida Cavanzo
-                                            en Laravel 9.</b>
+                                        <b>Prueba tecnica para Konecta Colombia hecha por <br> Martin Danilo Almeida
+                                            Cavanzo en Laravel 9.</b>
                                     </small>
                                 </h2>
 

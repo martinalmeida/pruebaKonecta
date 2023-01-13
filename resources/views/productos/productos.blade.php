@@ -7,7 +7,7 @@
 @section('head')
     <x-header title="Productos">
         <button type="button" class="btn btn-info active m-4" onclick="showModalRegistro();">
-            Agregar <i class="fal fa-plus-square"></i>
+            Agregar Producto <i class="fal fa-plus-square"></i>
         </button>
     </x-header>
 @endsection
@@ -24,7 +24,7 @@
             <th>Fecha Creación</th>
             <th>Usuario</th>
             <th>Estado</th>
-            <th style="width:150px">Acciones</th>
+            <th style="width:150px">Acciones de Producto</th>
         </x-table>
     </x-panel>
 
@@ -56,6 +56,7 @@
             <select class="select2 custom-select form-control" id="categoriaId" name="categoriaId">
             </select>
         </div>
+        <x-input-user></x-input-user>
     </x-modal-form>
 @endsection
 

@@ -70,11 +70,10 @@
                         </li>
                         <li
                             class="{{ $routeActive == 'producto' ? 'active open' : '' }}
-                                {{ $routeActive == 'asignar' ? 'active open' : '' }}
-                                {{ $routeActive == 'roles' ? 'active open' : '' }}">
+                                {{ $routeActive == 'stock' ? 'active open' : '' }}">
 
                             <a href="#" title="Inventario" data-filter-tags="category">
-                                <i class="fal fa-user-cog"></i>
+                                <i class="fal fa-dolly-flatbed"></i>
                                 <span class="nav-link-text" data-i18n="nav.category">Inventario</span>
                             </a>
                             <ul>
@@ -85,8 +84,8 @@
                                             data-i18n="nav.utilities_menu_child_another_item">Productos</span>
                                     </a>
                                 </li>
-                                <li class="{{ $routeActive == 'asignar' ? 'active' : '' }}">
-                                    <a href="/asignar" title="Administrar stoks de productos"
+                                <li class="{{ $routeActive == 'stock' ? 'active' : '' }}">
+                                    <a href="/stocks" title="Administrar stoks de productos"
                                         data-filter-tags="utilities disabled item">
                                         <span class="nav-link-text"
                                             data-i18n="nav.utilities_menu_child_another_item">Administrar Stoks</span>
@@ -94,9 +93,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="{{ $routeActive == 'informes' ? 'active' : '' }}">
-                            <a href="/informes" title="Venta de productos en stock" data-filter-tags="category">
-                                <i class="fal fa-file-chart-line"></i>
+                        <li class="{{ $routeActive == 'venta' ? 'active' : '' }}">
+                            <a href="/ventas" title="Venta de productos en stock" data-filter-tags="category">
+                                <i class="fal fa-sack-dollar"></i>
                                 <span class="nav-link-text" data-i18n="nav.category">Venta de Productos</span>
                             </a>
                         </li>
