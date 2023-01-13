@@ -18,16 +18,20 @@
                         name: 'categoria'
                     },
                     {
-                        data: 'cantidad',
-                        name: 'cantidad'
+                        data: 'name',
+                        name: 'name'
                     },
                     {
                         data: 'cantidad',
                         name: 'cantidad'
                     },
                     {
-                        data: 'canti2',
-                        name: 'canti2'
+                        data: 'vendida',
+                        name: 'vendida'
+                    },
+                    {
+                        data: 'disponible',
+                        name: 'disponible'
                     },
                     {
                         data: 'action',

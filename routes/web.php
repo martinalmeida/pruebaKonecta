@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\VentasController;
 
 // Rutas Login
 Route::controller(SesionController::class)->group(function () {
@@ -32,4 +33,16 @@ Route::controller(StockController::class)->group(function () {
     Route::get('selectProducto', 'selectProducto')->name('select.producto')->middleware('auth');
     Route::get('/stock/{id}', 'selectStock')->middleware('auth');
     Route::post('/updateStock', 'update')->middleware('auth');
+});
+
+// Rutas para adminstrar las ventas de los Productos
+Route::controller(VentasController::class)->group(function () {
+    Route::get('/ventas', 'index')->middleware('auth');
+    Route::get('tablaVentas', 'dataTableVentas')->name('table.ventas')->middleware('auth');
+    Route::get('selectStock', 'selectProductosStock')->name('select.productoStock')->middleware('auth');
+    Route::post('/createVenta', 'create')->middleware('auth');
+    Route::get('/venta/{id}', 'selectVenta')->middleware('auth');
+    Route::post('/updateVenta', 'update')->middleware('auth');
+    Route::get('/statusVenta/{id}/{status}', 'status')->middleware('auth');
+    Route::get('/deleteVenta/{id}', 'delete')->middleware('auth');
 });

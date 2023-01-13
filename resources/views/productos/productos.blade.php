@@ -47,7 +47,7 @@
                 name="precio" placeholder="Precio del producto" minlength="3" maxlength="10" required>
         </div>
         <div class="col-md-6 mb-3">
-            <label class="form-label" for="peso">Peso del Prducto:</label>
+            <label class="form-label" for="peso">Peso del Prducto en gramos:</label>
             <input type="text" onkeypress="return filterFloat(event,this);" class="form-control" id="peso"
                 name="peso" placeholder="Precio del producto" minlength="3" maxlength="10" required>
         </div>

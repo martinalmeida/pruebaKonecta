@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ViewStock;
 use App\Models\Stock;
 use App\Models\Producto;
 use DataTables;
@@ -18,18 +19,7 @@ class StockController extends Controller
     public function dataTableStock(Request $request)
     {
         if ($request->ajax()) {
-            $data = Stock::join('productos as p', 'p.id', '=', 'stock.productoId')
-                ->join('categorias as c', 'c.id', '=', 'p.categoriaId')
-                ->select(
-                    'stock.id',
-                    'p.nombreProducto',
-                    'c.categoria',
-                    'stock.cantidad',
-                )
-                ->selectRaw('CONCAT(stock.cantidad, "$") AS canti2')
-                ->where('p.status', '=', 1)
-                ->orderBy('p.nombreProducto', 'desc')
-                ->get();
+            $data = ViewStock::select('id', 'nombreProducto', 'categoria', 'name', 'cantidad', 'vendida', 'disponible')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $butons = '<div class="text-center"><a onclick="listData(' . $row['id'] . ');" class="btn btn-warning btn-sm text-white" title="Agregar Stock"><i class="fal fa-plus-circle"></i></a><div>';

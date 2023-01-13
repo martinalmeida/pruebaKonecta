@@ -14,6 +14,7 @@
         <x-table id="tablaStock">
             <th>Nombre de Producto</th>
             <th>Categoria de Producto</th>
+            <th>Usuario</th>
             <th>Cantidad Inicial</th>
             <th>Cantidad Vendida</th>
             <th>Cantidad Disponible</th>
