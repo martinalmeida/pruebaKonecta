@@ -28,12 +28,6 @@ php artisan db:seed
 Usuario: admin@admin.com Contraseña: admin
 
 ```
-
-## Capturas
-<img src="https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG">
-![Image text](https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG)
-![Image text](https://github.com/martinalmeida/pruebaKonecta/blob/main/dash.PNG)
-
 ## Licencia
 
 [MIT](https://choosealicense.com/licenses/mit/)
