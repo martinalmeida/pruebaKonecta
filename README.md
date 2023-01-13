@@ -31,8 +31,8 @@ Usuario: admin@admin.com Contraseña: admin
 
 ## Capturas
 
-(https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG)
-(https://github.com/martinalmeida/pruebaKonecta/blob/main/dash.PNG)
+![Image text](https://github.com/martinalmeida/pruebaKonecta/blob/main/login.PNG)
+![Image text](https://github.com/martinalmeida/pruebaKonecta/blob/main/dash.PNG)
 
 ## Licencia
 
