@@ -4,7 +4,7 @@ Prueba hecha para Konecta en laravel 9, php 8.1 y mysql.
 
 ## Instalar
 
-1. Inatlar el proyecto: <br />
+1. Instlar el proyecto: <br />
    Usando composer.
 
 ```bash
